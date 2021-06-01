@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Food;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Rainwater\Active\Active;
@@ -33,6 +35,10 @@ class AdminPanelController extends Controller
         $users =  Active::users()->count();
         $Guests = Active::guests()->count();
         $total = User::all()->count();
+
+        $category = Category::active();
+
+
 
 
         return view('dashboard',compact('users','Guests','total'));

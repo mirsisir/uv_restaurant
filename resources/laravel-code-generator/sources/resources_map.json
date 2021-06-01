@@ -1,0 +1,50 @@
+[
+    {
+        "model-name": "Post",
+        "resource-file": "posts.json"
+    },
+    {
+        "model-name": "SmsTemplate",
+        "resource-file": "sms_templates.json"
+    },
+    {
+        "model-name": "SmsContact",
+        "resource-file": "sms_contacts.json"
+    },
+    {
+        "model-name": "SMSModel",
+        "resource-file": "s_m_s_models.json"
+    },
+    {
+        "model-name": "BuySms",
+        "resource-file": "buy_sms.json"
+    },
+    {
+        "model-name": "Student",
+        "resource-file": "students.json"
+    },
+    {
+        "model-name": "IVA",
+        "resource-file": "i_v_as.json"
+    },
+    {
+        "model-name": "Test",
+        "resource-file": "tests.json"
+    },
+    {
+        "model-name": "Blog",
+        "resource-file": "blogs.json"
+    },
+    {
+        "model-name": "GeneralSettings",
+        "resource-file": "general_settings.json"
+    },
+    {
+        "model-name": "Food",
+        "resource-file": "food.json"
+    },
+    {
+        "model-name": "Category",
+        "resource-file": "categories.json"
+    }
+]
