@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Spicy ! </title>
+
+    <title>{{$settings->name}} </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,6 +23,7 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
@@ -29,7 +31,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-12 col-md d-flex align-items-center">
-                <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+                <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">{{$settings->phone}}</a> or <span class="mailus">email us:</span> <a href="#">{{$settings->email}}</a></p>
             </div>
             <div class="col-12 col-md d-flex justify-content-md-end">
                 <p class="mb-0">Mon - Fri / 9:00-21:00, Sat - Sun / 10:00-20:00</p>
@@ -48,7 +50,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Spicy !.<span>it</span></a>
+        <a class="navbar-brand" href="/">{{$settings->name}}.<span>it</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -79,7 +81,7 @@
         <div class="row mb-5">
             <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Spicy !.</h2>
+                    <h2 class="ftco-heading-2">{{$settings->name}} </h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                         <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
