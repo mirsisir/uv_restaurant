@@ -15,6 +15,7 @@ class CreateCartStoragesTable extends Migration
     {
         Schema::create('cart_storages', function (Blueprint $table) {
             $table->id();
+            $table->longText('cart_data');
             $table->timestamps();
         });
     }

@@ -166,6 +166,12 @@
                                 </div>
                             </div>
                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+                            <p class="btn-holder"><a href="javascript:void(0);"
+                                                     data-id="{{ $food->id }}" class="btn btn-warning
+                                  btn-block text-center add-to-cart" role="button">Add to cart</a>
+                                <i class="fa fa-circle-o-notch fa-spin btn-loading"
+                                   style="font-size:24px; display: none"></i>
+                            </p>
                         </div>
                     </div>
                     @endforeach

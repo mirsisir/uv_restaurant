@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+|MIR Sisir
 |
 */
 
@@ -29,22 +27,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [AdminPanelController::class, 'dashboard'])->name('admin_panel');
-
-
     Route::get('test_live',TestComponent::class)->name('livewire_test');
 });
-
 require __DIR__.'/auth.php';
-
-
-
-
 Route::get('/', [WebsiteControloller::class,'home'])->name('home');
-
-
 Route::get('/order', [WebsiteControloller::class,'order'])->name('order');
 Route::get('/menu', [WebsiteControloller::class,'menu'])->name('menu');
-
 
 
 //order-----------------------
@@ -52,6 +40,15 @@ Route::post('book_table',[ReservationController::class,'book_table'])->name('boo
 
 
 //blog area ---------------------------------------------------------------------------------------
+
+
+//Cart
+Route::get('cart', [WebsiteControloller::class,'cart']);
+Route::get('add-to-cart/{id}', [WebsiteControloller::class,'addToCart']);
+Route::patch('update-cart', [ WebsiteControloller::class,'update']);
+Route::delete('remove-from-cart', [WebsiteControloller::class,'remove']);
+
+//Cart
 
 
 
