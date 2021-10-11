@@ -213,7 +213,7 @@
 
                         <div class="flex-column h1 p-4 " style="background-color: purple ; color: white ; border-radius: 10px">
                             <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-                            <div class="date" id="date" style="font-size: 20px"></div>
+                            <div class="date" id="date" style="font-size: 15px"></div>
                         </div>
                     </a>
                 </li>
