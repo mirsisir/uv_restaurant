@@ -89,6 +89,9 @@ Route::group([
 
 });
 
+    Route::get('/read/blog/{id}', [BlogsController::class,'read'])->name('read.blog');
+    Route::get('/read/blogs', [BlogsController::class,'blogs'])->name('read.blogs');
+
 Route::group([
     'prefix' => 'general_settings',
 ], function () {

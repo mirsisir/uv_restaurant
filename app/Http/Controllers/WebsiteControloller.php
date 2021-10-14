@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FoodMenu;
+use App\Models\Blog;
 use App\Models\Food;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,10 @@ class WebsiteControloller extends Controller
                 return $food->take(1);
             });
 
+        $blogs = Blog::query()->latest()->take(3)->get();
 
-        return view('spicy.index',compact('foodmenu'));
+
+        return view('spicy.index',compact('foodmenu','blogs'));
     }
 
 

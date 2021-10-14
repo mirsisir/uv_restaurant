@@ -10,11 +10,7 @@ use Exception;
 class BlogsController extends Controller
 {
 
-    /**
-     * Display a listing of the blogs.
-     *
-     * @return Illuminate\View\View
-     */
+
     public function index()
     {
         $blogs = Blog::paginate(25);
@@ -22,11 +18,6 @@ class BlogsController extends Controller
         return view('blogs.index', compact('blogs'));
     }
 
-    /**
-     * Show the form for creating a new blog.
-     *
-     * @return Illuminate\View\View
-     */
     public function create()
     {
 
@@ -34,13 +25,7 @@ class BlogsController extends Controller
         return view('blogs.create');
     }
 
-    /**
-     * Store a new blog in the storage.
-     *
-     * @param Illuminate\Http\Request $request
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function store(Request $request)
     {
 
@@ -54,13 +39,7 @@ class BlogsController extends Controller
 
     }
 
-    /**
-     * Display the specified blog.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
+
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
@@ -68,13 +47,7 @@ class BlogsController extends Controller
         return view('blogs.show', compact('blog'));
     }
 
-    /**
-     * Show the form for editing the specified blog.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $blog = Blog::findOrFail($id);
@@ -83,14 +56,7 @@ class BlogsController extends Controller
         return view('blogs.edit', compact('blog'));
     }
 
-    /**
-     * Update the specified blog in the storage.
-     *
-     * @param int $id
-     * @param Illuminate\Http\Request $request
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function update($id, Request $request)
     {
 
@@ -105,13 +71,7 @@ class BlogsController extends Controller
 
     }
 
-    /**
-     * Remove the specified blog from the storage.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function destroy($id)
     {
         try {
@@ -128,12 +88,7 @@ class BlogsController extends Controller
     }
 
 
-    /**
-     * Get the request's data from the request.
-     *
-     * @param Illuminate\Http\Request\Request $request
-     * @return array
-     */
+
     protected function getData(Request $request)
     {
         $rules = [
@@ -154,13 +109,7 @@ class BlogsController extends Controller
         return $data;
     }
 
-    /**
-     * Moves the attached file to the server.
-     *
-     * @param Symfony\Component\HttpFoundation\File\UploadedFile $file
-     *
-     * @return string
-     */
+
     protected function moveFile($file)
     {
         if (!$file->isValid()) {
@@ -173,5 +122,21 @@ class BlogsController extends Controller
         $saved = $file->store('public/' . $path, config('filesystems.default'));
 
         return substr($saved, 7);
+    }
+
+
+    public function read($id){
+
+        $blog = Blog::find($id);
+        return view('blogs.read',compact('blog'));
+
+    }
+
+    public function blogs(){
+
+        $blogs = Blog::all();
+
+        return view('blogs.blogs',compact('blogs'));
+
     }
 }
