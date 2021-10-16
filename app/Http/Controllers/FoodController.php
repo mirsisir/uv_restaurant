@@ -11,11 +11,7 @@ use Exception;
 class FoodController extends Controller
 {
 
-    /**
-     * Display a listing of the food.
-     *
-     * @return Illuminate\View\View
-     */
+
     public function index()
     {
         $foodObjects = Food::with('category')->paginate(25);
@@ -23,11 +19,6 @@ class FoodController extends Controller
         return view('food.index', compact('foodObjects'));
     }
 
-    /**
-     * Show the form for creating a new food.
-     *
-     * @return Illuminate\View\View
-     */
     public function create()
     {
         $categories = Category::pluck('name','id')->all();
@@ -35,13 +26,7 @@ class FoodController extends Controller
         return view('food.create', compact('categories'));
     }
 
-    /**
-     * Store a new food in the storage.
-     *
-     * @param Illuminate\Http\Request $request
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function store(Request $request)
     {
 
@@ -55,13 +40,7 @@ class FoodController extends Controller
 
     }
 
-    /**
-     * Display the specified food.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
+
     public function show($id)
     {
         $food = Food::with('category')->findOrFail($id);
@@ -69,13 +48,7 @@ class FoodController extends Controller
         return view('food.show', compact('food'));
     }
 
-    /**
-     * Show the form for editing the specified food.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $food = Food::findOrFail($id);
@@ -84,14 +57,7 @@ class FoodController extends Controller
         return view('food.edit', compact('food','categories'));
     }
 
-    /**
-     * Update the specified food in the storage.
-     *
-     * @param int $id
-     * @param Illuminate\Http\Request $request
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function update($id, Request $request)
     {
 
@@ -106,13 +72,7 @@ class FoodController extends Controller
 
     }
 
-    /**
-     * Remove the specified food from the storage.
-     *
-     * @param int $id
-     *
-     * @return Illuminate\Http\RedirectResponse | Illuminate\Routing\Redirector
-     */
+
     public function destroy($id)
     {
         try {
@@ -129,12 +89,7 @@ class FoodController extends Controller
     }
 
 
-    /**
-     * Get the request's data from the request.
-     *
-     * @param Illuminate\Http\Request\Request $request
-     * @return array
-     */
+
     protected function getData(Request $request)
     {
         $rules = [
@@ -162,13 +117,7 @@ class FoodController extends Controller
         return $data;
     }
 
-    /**
-     * Moves the attached file to the server.
-     *
-     * @param Symfony\Component\HttpFoundation\File\UploadedFile $file
-     *
-     * @return string
-     */
+
     protected function moveFile($file)
     {
         if (!$file->isValid()) {

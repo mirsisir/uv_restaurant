@@ -6,6 +6,16 @@
     <div style="height: 200px;"></div>
 
  <div class="m-4 p-4">
+     @if(Session::has('message'))
+
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+         <strong>{{ Session::get('message') }}</strong>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+     </div>
+
+     @endif
      <span id="status"></span>
 
      <table id="cart" class="table table-hover table-condensed">
@@ -30,7 +40,8 @@
                  <tr>
                      <td data-th="Product">
                          <div class="row">
-                             <div class="col-sm-3 hidden-xs"><img src="{{ $details['photo'] }}" width="100" height="100" class="img-responsive"/></div>
+                             <div class="col-sm-3 hidden-xs">
+                                 <img src="https://i.pinimg.com/originals/94/ee/2f/94ee2fda4931c26b3c55ed23d28e885e.png"  height="100" class="img-responsive"/></div>
                              <div class="col-sm-9">
                                  <h4 class="nomargin">{{ $details['name'] }}</h4>
                              </div>
@@ -53,12 +64,24 @@
          </tbody>
          <tfoot>
          <tr class="visible-xs">
-             <td class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
+             <td colspan="4" class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
+             <td>
+
+             </td>
          </tr>
+
+
+         <br>
          <tr>
              <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
              <td colspan="2" class="hidden-xs"></td>
-             <td class="hidden-xs text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
+             <td class="hidden-xs text-center">
+                 <strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
+             <td colspan="2">
+                 @if(session('cart'))
+                 <a href="{{route('order_confirm')}}"      class="btn  btn-success btn-lg">Confirm Order</a>
+                 @endif
+             </td>
          </tr>
          </tfoot>
      </table>

@@ -46,5 +46,14 @@
     {
         "model-name": "Category",
         "resource-file": "categories.json"
+    },
+    {
+        "model-name": "Reservation",
+        "resource-file": "reservations.json",
+        "table-name": "reservations"
+    },
+    {
+        "model-name": "Order",
+        "resource-file": "orders.json"
     }
 ]

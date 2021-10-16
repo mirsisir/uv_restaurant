@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Food;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Rainwater\Active\Active;
@@ -31,16 +32,21 @@ class AdminPanelController extends Controller
     }
 
     public function dashboard(){
+
+
+//       dd($notifications);
+
         $ip = self::getUserIpAddr();
         $users =  Active::users()->count();
         $Guests = Active::guests()->count();
         $total = User::all()->count();
 
         $category = Category::active();
+        $reservation= Reservation::all()->count();
+        $foods= Food::all()->count();
 
 
 
-
-        return view('dashboard',compact('users','Guests','total'));
+        return view('dashboard',compact('users','Guests','total','reservation','foods',));
     }
 }

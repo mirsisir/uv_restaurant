@@ -24,6 +24,7 @@
     <script src="https://kit.fontawesome.com/5be0a97c46.js" crossorigin="anonymous"></script>
 
     @livewireStyles
+    @php($notifications = auth()->user()->unreadNotifications)
 
 </head>
 <body>
@@ -42,8 +43,12 @@
         color: black;
         text-decoration-color: white;
     }
+    .black:hover{
+        color: black;
+    }
 </style>
 <div class="container-scroller ">
+
     <!-- partial:partials/_navbar.html -->
     <nav class=" navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -58,14 +63,48 @@
             <div class="search-field d-none d-md-block">
                 <form class="d-flex align-items-center h-100" action="#">
                     <div class="input-group">
-                        <div class="input-group-prepend bg-transparent">
-                            <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                        </div>
-                        <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+
+                        <h3>@yield('title')</h3>
                     </div>
                 </form>
             </div>
-            <ul class="navbar-nav navbar-nav-right">
+            <ul class="navbar-nav ">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-bell-outline"></i>
+                        <span class="count-symbol bg-danger"></span><span class="text-danger">{{count($notifications)}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list p-4 " style="width: 900px;" aria-labelledby="notificationDropdown">
+                        <h6 class="p-3 mb-0">Notifications</h6>
+
+                        @forelse($notifications as $notification)
+
+                        <a class="dropdown-item preview-item border black">
+
+                            <p class="black  mb-0">
+                                User {{ $notification->data['name'] }}
+
+                                ({{ $notification->data['email'] }}) has just registered.
+                                ({{ $notification->data['email'] }}) has just <registered class=""></registered>
+
+                            </p>.
+                            <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                                Mark as read
+                            </a>
+                        </a>
+                            @if($loop->last)
+                                <a href="#" id="mark-all">
+                                    Mark all as read
+                                </a>
+                            @endif
+                        @empty
+                            There are no new notifications
+                        @endforelse
+
+                        <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+                    </div>
+                </li>
+
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-img">
@@ -73,12 +112,11 @@
                             <span class="availability-status online"></span>
                         </div>
                         <div class="nav-profile-text">
-                            <p class="mb-1 text-black">David Greymaax</p>
+                            <p class="mb-1 text-black">{{auth()->user()->name}}</p>
                         </div>
                     </a>
                     <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -99,116 +137,25 @@
                         <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                        <i class="mdi mdi-email-outline"></i>
-                        <span class="count-symbol bg-warning"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                        <h6 class="p-3 mb-0">Messages</h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="{{ asset('assets/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                                <p class="text-gray mb-0"> 1 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                                <p class="text-gray mb-0"> 15 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="{{ asset('assets/images/faces/face3.jpg') }}" alt="image" class="profile-pic">
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                                <p class="text-gray mb-0"> 18 Minutes ago </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="p-3 mb-0 text-center">4 new messages</h6>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                        <i class="mdi mdi-bell-outline"></i>
-                        <span class="count-symbol bg-danger"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                        <h6 class="p-3 mb-0">Notifications</h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-success">
-                                    <i class="mdi mdi-calendar"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                                <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-warning">
-                                    <i class="mdi mdi-settings"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                                <p class="text-gray ellipsis mb-0"> Update dashboard </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <div class="preview-icon bg-info">
-                                    <i class="mdi mdi-link-variant"></i>
-                                </div>
-                            </div>
-                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                                <p class="text-gray ellipsis mb-0"> New admin wow! </p>
-                            </div>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-                    </div>
-                </li>
-                <li class="nav-item nav-logout d-none d-lg-block">
-                    <a class="nav-link" href="#">
-                        <i class="mdi mdi-power"></i>
-                    </a>
-                </li>
-                <li class="nav-item nav-settings d-none d-lg-block">
-                    <a class="nav-link" href="#">
-                        <i class="mdi mdi-format-line-spacing"></i>
-                    </a>
-                </li>
+
             </ul>
+
+
+
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                 <span class="mdi mdi-menu"></span>
             </button>
         </div>
     </nav>
+
+
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
-                <li class="nav-item nav-profile">
+                <li class="nav-item nav-profile" style="background-color: #c9e5ea">
                     <a href="#" class="nav-link">
 
                         <div class="flex-column h1 p-4 " style="background-color: purple ; color: white ; border-radius: 10px">
@@ -243,17 +190,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
-                        <span class="menu-title">Forms</span>
-                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/chartjs.html">
-                        <span class="menu-title">Charts</span>
+                    <a class="nav-link" href="{{route('orders.order.index')}}">
+                        <span class="menu-title">Order</span>
                         <i class="mdi mdi-chart-bar menu-icon"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('reservations.reservation.index')}}">
+                        <span class="menu-title">Reservations</span>
+                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="pages/tables/basic-table.html">
                         <span class="menu-title">Tables</span>
@@ -319,6 +267,7 @@
 <!-- container-scroller -->
 
 @yield('js')
+@yield('scripts')
 <script type="text/javascript">
 
 

@@ -11,6 +11,7 @@ class WebsiteControloller extends Controller
 {
     public function home(){
 
+
         $foodmenu = Food::inRandomOrder()->get()
             ->groupBy('category_id')
             ->take(3)
@@ -34,6 +35,7 @@ class WebsiteControloller extends Controller
 
     public function cart()
     {
+
         return view('website.cart');
     }
 
@@ -54,6 +56,7 @@ class WebsiteControloller extends Controller
 
             $cart = [
                 $id => [
+                    "food" => $id,
                     "name" => $food->name,
                     "quantity" => 1,
                     "price" => $food->price,
@@ -102,6 +105,8 @@ class WebsiteControloller extends Controller
         //return redirect()->back()->with('success', 'food added to cart successfully!');
     }
 
+
+
     public function update(Request $request)
     {
         if($request->id and $request->quantity)
@@ -141,7 +146,8 @@ class WebsiteControloller extends Controller
 
             $htmlCart = view('layouts._header_cart')->render();
 
-            return response()->json(['msg' => 'food removed successfully', 'data' => $htmlCart, 'total' => $total]);
+            return response()->json(['msg' => 'food removed successfully',
+                'data' => $htmlCart, 'total' => $total]);
 
             //session()->flash('success', 'food removed successfully');
         }
@@ -160,5 +166,9 @@ class WebsiteControloller extends Controller
 
         return number_format($total, 2);
     }
+
+
+
+
 
 }
