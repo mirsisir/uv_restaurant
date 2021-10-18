@@ -121,7 +121,7 @@
     </div>
 </section>
 
-<section class="ftco-section ftco-intro" style="background-image: url(images/bg_3.jpg);">
+<section class="ftco-section ftco-intro" >
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -189,115 +189,9 @@
 
 </section>
 
-<section class="ftco-section testimony-section" style="background-image: url(images/bg_5.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center mb-3 pb-2">
-            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                <span class="subheading">Testimony</span>
-                <h2 class="mb-4">Happy Customer</h2>
-            </div>
-        </div>
-        <div class="row ftco-animate justify-content-center">
-            <div class="col-md-7">
-                <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap text-center">
-                            <div class="text p-3">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
-                                </div>
-                                <p class="name">John Gustavo</p>
-                                <span class="position">Customer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap text-center">
-                            <div class="text p-3">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
-                                </div>
-                                <p class="name">John Gustavo</p>
-                                <span class="position">Customer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap text-center">
-                            <div class="text p-3">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
-                                </div>
-                                <p class="name">John Gustavo</p>
-                                <span class="position">Customer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap text-center">
-                            <div class="text p-3">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
-                                </div>
-                                <p class="name">John Gustavo</p>
-                                <span class="position">Customer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap text-center">
-                            <div class="text p-3">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
-										<span class="quote d-flex align-items-center justify-content-center">
-											<i class="fa fa-quote-left"></i>
-										</span>
-                                </div>
-                                <p class="name">John Gustavo</p>
-                                <span class="position">Customer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
-<section class="ftco-section ftco-no-pt ftco-no-pb">
-    <div class="container">
-        <div class="row d-flex">
-            <div class="col-md-6 d-flex">
-                <div class="img img-2 w-100 mr-md-2" style="background-image: url(images/bg_6.jpg);"></div>
-                <div class="img img-2 w-100 ml-md-2" style="background-image: url(images/bg_4.jpg);"></div>
-            </div>
-            <div class="col-md-6 ftco-animate makereservation p-4 p-md-5">
-                <div class="heading-section ftco-animate mb-5">
-                    <span class="subheading">This is our secrets</span>
-                    <h2 class="mb-4">Perfect Ingredients</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                    </p>
-                    <p><a href="#" class="btn btn-primary">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<hr>
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-2">

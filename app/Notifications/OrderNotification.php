@@ -41,8 +41,9 @@ class OrderNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'name' => $this->user->name,
-            'email' => $this->user->email,
+            'name' => $this->user->name ?? " ",
+            'email' => $this->user->email ?? " ",
+            'data' => $this->user,
         ];
     }
 }

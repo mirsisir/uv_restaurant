@@ -15,9 +15,9 @@ class SendOrderNotification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event)
     {
-        //
+        $this->handle($event);
     }
 
     /**
@@ -34,6 +34,6 @@ class SendOrderNotification
 //
         $admins = User::query()->where('id', 1)->get();
 
-        Notification::send($admins, new OrderNotification($event->user));
+        Notification::send($admins, new OrderNotification($event));
     }
 }

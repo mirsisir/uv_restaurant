@@ -171,5 +171,7 @@ Route::group([
 
 
 
+    Route::get('/mark-as-read',[AdminPanelController::class,'markNotification'])->name('markNotification');
+
 
 });

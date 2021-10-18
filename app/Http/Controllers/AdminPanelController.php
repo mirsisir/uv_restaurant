@@ -49,4 +49,19 @@ class AdminPanelController extends Controller
 
         return view('dashboard',compact('users','Guests','total','reservation','foods',));
     }
+
+
+    public function markNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
+    }
+
+
 }

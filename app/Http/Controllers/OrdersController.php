@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Listeners\SendOrderNotification;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -34,6 +36,8 @@ class OrdersController extends Controller
         $data = $this->getData($request);
 
         Order::create($data);
+
+        event(new SendOrderNotification($data));
 
         return redirect()->route('orders.order.index')
             ->with('success_message', 'Order was successfully added.');

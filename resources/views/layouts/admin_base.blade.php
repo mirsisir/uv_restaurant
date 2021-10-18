@@ -308,6 +308,35 @@
 
 
 </script>
+<script>
+    function sendMarkRequest(id = null) {
+        alert('sss')
+        return $.ajax("{{ route('markNotification') }}", {
+            method: 'GET',
+            data: {
+                id
+            }
+        });
+    }
+
+    $(function() {
+        $('.mark-as-read').click(function() {
+            let request = sendMarkRequest($(this).data('id'));
+
+            request.done(() => {
+                $(this).parents('div.alert').remove();
+            });
+        });
+
+        $('#mark-all').click(function() {
+            let request = sendMarkRequest();
+
+            request.done(() => {
+                $('div.alert').remove();
+            })
+        });
+    });
+</script>
 
 <script>
 
