@@ -26,7 +26,6 @@
 
 </head>
 <body>
-
 <div class="wrap">
     <div class="container">
         <div class="row justify-content-between">
@@ -60,7 +59,7 @@
                 <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 {{--                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--}}
                 <li class="nav-item"><a href="{{route('menu')}}" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="reservation.html" class="nav-link">Reservation</a></li>
+                <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
                 <li class="nav-item"><a href="{{route('read.blogs')}}" class="nav-link">Blog</a></li>
 
                 <a href="{{route('cart')}}">
@@ -75,6 +74,7 @@
     </div>
 </nav>
 <!-- END nav -->
+@include('layouts.flash_msg')
 
 
 @yield('content')
@@ -108,29 +108,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Instagram</h2>
-                    <div class="thumb d-sm-flex">
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-1.jpg);">
-                        </a>
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-2.jpg);">
-                        </a>
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-3.jpg);">
-                        </a>
-                    </div>
-                    <div class="thumb d-flex">
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-4.jpg);">
-                        </a>
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-5.jpg);">
-                        </a>
-                        <a href="#" class="thumb-menu img" style="background-image: url(images/insta-6.jpg);">
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-6">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Newsletter</h2>
                     <p>Far far away, behind the word mountains, far from the countries.</p>

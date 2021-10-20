@@ -65,7 +65,11 @@
                             <td>{{ $reservation->table_no }}</td>
 
                             <td>
+                                <div>
+                                    <button class="btn text-success" title="Accept"><i class="fas fa-check"></i></button>
+                                    <button class="btn text-danger" title="Reject"><i class="fas fa-times"></i></button>
 
+                                </div>
                                 <form method="POST" action="{!! route('reservations.reservation.destroy', $reservation->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}

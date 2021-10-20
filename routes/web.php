@@ -34,6 +34,20 @@ Route::get('/menu', [WebsiteControloller::class,'menu'])->name('menu');
 Route::get('/read/blog/{id}', [BlogsController::class,'read'])->name('read.blog');
 Route::get('/read/blogs', [BlogsController::class,'blogs'])->name('read.blogs');
 
+Route::post('book_table',[ReservationController::class,'book_table'])->name('book_table');
+
+//Cart
+Route::get('cart', [WebsiteControloller::class,'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [WebsiteControloller::class,'addToCart']);
+Route::patch('update-cart', [ WebsiteControloller::class,'update']);
+Route::delete('remove-from-cart', [WebsiteControloller::class,'remove']);
+
+
+
+Route::get('order_confirm',[OrdersController::class,'order_confirm'])->name('order_confirm');
+
+
+
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -95,11 +109,6 @@ Route::group(['middleware' => 'auth'], function () {
 //blog area ---------------------------------------------------------------------------------------
 
 
-//Cart
-Route::get('cart', [WebsiteControloller::class,'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [WebsiteControloller::class,'addToCart']);
-Route::patch('update-cart', [ WebsiteControloller::class,'update']);
-Route::delete('remove-from-cart', [WebsiteControloller::class,'remove']);
 
 
 //admin ----------------------------------------------------------------------------------------admin
@@ -135,7 +144,6 @@ Route::group([
 
 //book_table-----------------------
 
-Route::post('book_table',[ReservationController::class,'book_table'])->name('book_table');
 
 
 Route::group([
@@ -165,7 +173,6 @@ Route::group([
     Route::delete('/order/{order}',[OrdersController::class,'destroy'])->name('orders.order.destroy')->where('id', '[0-9]+');
 
 
-    Route::get('order_confirm',[OrdersController::class,'order_confirm'])->name('order_confirm');
 
 });
 

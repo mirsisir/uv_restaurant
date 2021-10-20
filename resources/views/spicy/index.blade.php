@@ -38,7 +38,7 @@
 
 
 
-<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt">
+<section class="ftco-section ftco-wrap-about ftco-no-pb ftco-no-pt" id="reservation">
     <div class="container">
         <div class="row no-gutters">
             <div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
@@ -232,7 +232,7 @@
         <div class="row py-2">
             <div class="col-md-12 text-center">
                 <h2>We Make Delicious &amp; Nutritious Food</h2>
-                <a href="#" class="btn btn-white btn-outline-white">Book A Table Now</a>
+                <a href="#reservation" class="btn btn-white btn-outline-white">Book A Table Now</a>
             </div>
         </div>
     </div>

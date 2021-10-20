@@ -20,7 +20,7 @@ class ReservationController extends Controller
        $data->save();
 
 
-       return redirect(route('home'));
+       return redirect(route('home'))->with('reservation',"your request has been placed wait for confirmation");
    }
 
 

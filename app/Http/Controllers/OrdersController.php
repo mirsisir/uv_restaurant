@@ -121,7 +121,7 @@ class OrdersController extends Controller
         }
 
         $_order = new Order;
-        $_order->user_id = auth()->user()->id;
+        $_order->user_id = auth()->user()->id ?? 1;
         $_order->total = $total;
         $_order->discount = 0;
         $_order->payment = 0;
