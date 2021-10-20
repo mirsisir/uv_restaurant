@@ -66,8 +66,14 @@
 
                             <td>
                                 <div>
-                                    <button class="btn text-success" title="Accept"><i class="fas fa-check"></i></button>
-                                    <button class="btn text-danger" title="Reject"><i class="fas fa-times"></i></button>
+                                    @if($reservation->accept == 0)
+                                        <button id="confirm{{$reservation->id}}" class="btn text-success" title="Accept"
+                                                onclick="confirm_table({{$reservation->id}})"><i class="fas fa-check"></i>
+
+                                        </button>
+                                    @endif
+
+{{--                                    <button class="btn text-danger" title="Reject"><i class="fas fa-times"></i></button>--}}
 
                                 </div>
                                 <form method="POST" action="{!! route('reservations.reservation.destroy', $reservation->id) !!}" accept-charset="UTF-8">
@@ -82,7 +88,8 @@
                                             <i class="fas fa-edit text-primary" aria-hidden="true"></i>
                                         </a>
 
-                                        <button type="submit" style="border: none;background: transparent"  title="Delete Reservation" onclick="return confirm(&quot;Click Ok to delete Reservation.&quot;)">
+                                        <button type="submit" style="border: none;background: transparent"  title="Delete Reservation"
+                                                onclick="return confirm(&quot;Click Ok to delete Reservation.&quot;)">
                                             <i class=" fas  fa-trash text-danger" aria-hidden="true"></i>
                                         </button>
                                     </div>
@@ -109,6 +116,34 @@
 
 @section('scripts')
 
+    <script>
+        function confirm_table(id){
+            // $( this ).hide(  );
+            // $('#confirm').hide();
+
+            $.ajax({
+                url : '/reservation_confirm/' + id,
+                type : 'GET',
+                success : function(result){
+
+                    alert('Reservation Confirm')
+                    location.reload()
+                },
+
+                error : function(result, statut, error){
+                    alert('false')
+
+                }
+
+            });
+
+
+
+        }
+
+
+    </script>
+
      <script>
          $(document).ready(function () {
              $('table').DataTable({
@@ -122,6 +157,8 @@
              });
          });
      </script>
+
+
 
      <style>
          .dataTables_filter {

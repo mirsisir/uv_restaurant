@@ -44,7 +44,7 @@ Route::delete('remove-from-cart', [WebsiteControloller::class,'remove']);
 
 
 
-Route::get('order_confirm',[OrdersController::class,'order_confirm'])->name('order_confirm');
+Route::post('order_confirm',[OrdersController::class,'order_confirm'])->name('order_confirm');
 
 
 
@@ -158,7 +158,12 @@ Route::group([
     Route::put('reservation/{reservation}', [ReservationsController::class,'update'])->name('reservations.reservation.update');
     Route::delete('/reservation/{reservation}',[ReservationsController::class,'destroy'])->name('reservations.reservation.destroy');
 
+
+    Route::get('/reservation_confirm/{id}', [ReservationsController::class,'reservation_confirm'])->name('reservation_confirm');
+
 });
+
+
 
 Route::group([
     'prefix' => 'orders',

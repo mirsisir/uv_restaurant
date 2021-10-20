@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+
+
 </head>
 <body>
 <div class="wrap">
@@ -57,9 +60,8 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
-{{--                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>--}}
                 <li class="nav-item"><a href="{{route('menu')}}" class="nav-link">Menu</a></li>
-                <li class="nav-item"><a href="#reservation" class="nav-link">Reservation</a></li>
+                <li class="nav-item"><a href="{{route('home')}}#reservation" class="nav-link">Reservation</a></li>
                 <li class="nav-item"><a href="{{route('read.blogs')}}" class="nav-link">Blog</a></li>
 
                 <a href="{{route('cart')}}">

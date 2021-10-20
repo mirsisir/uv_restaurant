@@ -110,4 +110,13 @@ class ReservationsController extends Controller
         return $data;
     }
 
+    public function reservation_confirm($id){
+
+            $reservation = Reservation::find($id);
+            $reservation->accept = 1;
+            $reservation->save();
+
+        return $reservation;
+    }
+
 }

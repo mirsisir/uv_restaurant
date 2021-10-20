@@ -20,12 +20,7 @@ class SendOrderNotification
         $this->handle($event);
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
-     */
+
     public function handle($event)
     {
 //        $admins = User::whereHas('roles', function ($query) {

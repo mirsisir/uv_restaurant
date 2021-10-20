@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Listeners\SendOrderNotification;
+use App\Mail\TableReservationRequest;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Mail;
 
 class ReservationController extends Controller
 {
@@ -18,6 +21,14 @@ class ReservationController extends Controller
        $data->guest = $request->guest;
        $data->accept = 0;
        $data->save();
+
+       $data->type = 'reservation';
+
+
+
+       event(new SendOrderNotification($data));
+
+       Mail::to($request->email)->send(new TableReservationRequest());
 
 
        return redirect(route('home'))->with('reservation',"your request has been placed wait for confirmation");

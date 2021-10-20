@@ -11,15 +11,19 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script type="text/javascript" language="javascript"
+            src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://kit.fontawesome.com/5be0a97c46.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
@@ -39,23 +43,38 @@
         margin-right: auto;
         margin-left: auto;
     }
+
     input[type=text]:focus {
         background-color: skyblue;
         color: black;
         text-decoration-color: white;
     }
-    .black:hover{
+
+    .black:hover {
         color: black;
     }
+    .blink{
+        color:red;
+        font-size:30px;
+        animation:blink_animation .5s infinite;
+    }
+    @keyframes blink_animation {
+        50%   {color:red;}
+        100% {color:blue}
+    }
+
 </style>
 <div class="container-scroller ">
 
     <!-- partial:partials/_navbar.html -->
     <nav class=" navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class=" navbar-brand brand-logo" href="{{route('admin_panel')}}"><h1 class="bold" style="color: purple">Spicy ! </h1></a>
+            <a class=" navbar-brand brand-logo" href="{{route('admin_panel')}}"><h1 class="bold" style="color: purple">
+                    Spicy ! </h1></a>
 
-            <a class="navbar-brand brand-logo-mini" href="{{route('admin_panel')}}"><img src="https://www.logodesign.net/images/tutorials/restaurent-logos/restaurant-logo-designer-needs.png" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="{{route('admin_panel')}}"><img
+                    src="https://www.logodesign.net/images/tutorials/restaurent-logos/restaurant-logo-designer-needs.png"
+                    alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -69,30 +88,80 @@
                     </div>
                 </form>
             </div>
+
+
             <ul class="navbar-nav ">
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <li class="nav-item dropdown @if(count($notifications ) >0)  blink @endif " style="background-color: #93a7bf">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                       data-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
-                        <span class="count-symbol bg-danger"></span><span class="text-danger">{{count($notifications)}}</span>
+                        <h2 class="count-symbol bg-danger blink"></h2><span
+                            class=" ">{{count($notifications)}} </span>
+
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list p-4 " style="width: 900px;" aria-labelledby="notificationDropdown">
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list p-4 "
+                         style="width: 900px;" aria-labelledby="notificationDropdown">
                         <h6 class="p-3 mb-0">Notifications</h6>
 
                         @forelse($notifications as $notification)
 
-                        <a class="dropdown-item preview-item border black">
 
-                            <p class="black  mb-0">
-                                User {{ $notification->data['name'] }}
 
-                                ({{ $notification->data['email'] }}) has just registered.
-                                ({{ $notification->data['email'] }}) has just <registered class=""></registered>
+                            {{--                        <a class="dropdown-item preview-item border black">--}}
 
-                            </p>.
-                            <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
-                                Mark as read
-                            </a>
-                        </a>
+                            {{--                            <p class="black  mb-0">--}}
+                            {{--                                User {{ $notification->data['name'] }}--}}
+
+                            {{--                                ({{ $notification->data['email'] }}) has just registered.--}}
+                            {{--                                ({{ $notification->data['email'] }}) has just <registered class=""></registered>--}}
+
+                            {{--                            </p>.--}}
+                            {{--                            <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">--}}
+                            {{--                                Mark as read--}}
+                            {{--                            </a>--}}
+                            {{--                        </a>--}}
+
+
+                            @php($type = $notification->data['data']['type'] ?? " ")
+
+                            @if( $type == 'reservation')
+                                <a href="{{route('reservations.reservation.index')}}" class="dropdown-item preview-item border black">
+
+                                    <p class="black  mb-2 text-danger">
+                                        User : {{ $notification->data['data']['name'] }}
+
+                                        Phone : {{ $notification->data['data']['phone'] }} Request For a Table Reservation at
+                                        {{ $notification->data['data']['date'] }}
+                                        <registered class=""></registered>
+                                    </p>
+
+
+                                    .
+                                    <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                                        Mark as read
+                                    </a>
+                                </a>
+                            @endif
+                            @if( $type == 'Online Order')
+                                <a href="{{route('orders.order.index')}}" class="dropdown-item preview-item border black">
+
+                                    <p class="black  mb-2 text-danger">
+                                        New Online Order From .
+                                        Name : {{ $notification->data['data']['customer'] }},
+                                        Phone : {{ $notification->data['data']['phone'] }}
+                                    </p>
+
+
+                                    .
+                                    <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                                        Mark as read
+                                    </a>
+                                </a>
+                            @endif
+
+
+
+
                             @if($loop->last)
                                 <a href="#" id="mark-all">
                                     Mark all as read
@@ -107,7 +176,8 @@
                 </li>
 
                 <li class="nav-item nav-profile dropdown">
-                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
+                       aria-expanded="false">
                         <div class="nav-profile-img">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
                             <span class="availability-status online"></span>
@@ -122,7 +192,7 @@
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                            <i class="mdi mdi-logout mr-2 text-primary"></i>  {{ __('Logout') }}
+                            <i class="mdi mdi-logout mr-2 text-primary"></i> {{ __('Logout') }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
@@ -142,13 +212,12 @@
             </ul>
 
 
-
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                 <span class="mdi mdi-menu"></span>
             </button>
         </div>
     </nav>
-
 
 
     <!-- partial -->
@@ -159,7 +228,8 @@
                 <li class="nav-item nav-profile" style="background-color: #c9e5ea">
                     <a href="#" class="nav-link">
 
-                        <div class="flex-column h1 p-4 " style="background-color: purple ; color: white ; border-radius: 10px">
+                        <div class="flex-column h1 p-4 "
+                             style="background-color: purple ; color: white ; border-radius: 10px">
                             <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
                             <div class="date" id="date" style="font-size: 15px"></div>
                         </div>
@@ -172,15 +242,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
                         <span class="menu-title">Food Menu</span>
                         <i class="menu-arrow"></i>
                         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('categories.category.index')}}">Category</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{route('food.food.index')}}">Food Item</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('categories.category.index')}}">Category</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('food.food.index')}}">Food Item</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -210,18 +283,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
+                    <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false"
+                       aria-controls="general-pages">
                         <span class="menu-title">Sample Pages</span>
                         <i class="menu-arrow"></i>
                         <i class="mdi mdi-medical-bag menu-icon"></i>
                     </a>
                     <div class="collapse" id="general-pages">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/samples/blank-page.html"> Blank
+                                    Page </a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/samples/register.html"> Register </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
                         </ul>
                     </div>
                 </li>
@@ -256,7 +332,8 @@
             <footer class="footer">
                 <div class="container-fluid clearfix">
                     <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
                 </div>
             </footer>
             <!-- partial -->
@@ -272,9 +349,7 @@
 <script type="text/javascript">
 
 
-
-
-    function showTime(){
+    function showTime() {
         var date = new Date();
         var h = date.getHours(); // 0 - 23
         var m = date.getMinutes(); // 0 - 59
@@ -283,11 +358,11 @@
         var session = "";
 
 
-        if(h == 0){
+        if (h == 0) {
             h = 12;
         }
 
-        if(h > 12){
+        if (h > 12) {
             h = h - 12;
             session = "";
         }
@@ -303,15 +378,14 @@
         setTimeout(showTime, 1000);
 
     }
+
     showTime();
-
-
 
 
 </script>
 <script>
     function sendMarkRequest(id = null) {
-        alert('sss')
+        // alert('sss')
         return $.ajax("{{ route('markNotification') }}", {
             method: 'GET',
             data: {
@@ -320,16 +394,17 @@
         });
     }
 
-    $(function() {
-        $('.mark-as-read').click(function() {
+    $(function () {
+        $('.mark-as-read').click(function () {
             let request = sendMarkRequest($(this).data('id'));
 
             request.done(() => {
                 $(this).parents('div.alert').remove();
             });
+            location.reload()
         });
 
-        $('#mark-all').click(function() {
+        $('#mark-all').click(function () {
             let request = sendMarkRequest();
 
             request.done(() => {
@@ -341,15 +416,19 @@
 
 <script>
 
-    var options = { weekday: 'long',  month: 'long', day: 'numeric' };
-    var today  = new Date();
+    var options = {weekday: 'long', month: 'long', day: 'numeric'};
+    var today = new Date();
 
     document.getElementById("date").innerText = today.toLocaleDateString("en-US", options);
 </script>
 
 <!-- End custom js for this page -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="{{ asset('assets/vendors/chart.js/Chart.min.js')}}"></script>

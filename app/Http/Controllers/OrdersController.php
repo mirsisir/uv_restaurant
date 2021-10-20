@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Listeners\SendOrderNotification;
+use App\Mail\OnlineOrderMail;
+use App\Mail\TableReservationRequest;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Exception;
+use Mail;
 
 class OrdersController extends Controller
 {
@@ -112,7 +115,7 @@ class OrdersController extends Controller
     }
 
 
-    public function order_confirm()
+    public function order_confirm( Request $request)
     {
         $orders = session('cart');
         $total = 0;
@@ -134,6 +137,17 @@ class OrdersController extends Controller
         unset($cart);
         $_cart = null;
         session()->put('cart', $_cart);
+
+        $_order->type = 'Online Order';
+        $_order->customer = $request->name ?? "Unknown";
+        $_order->phone = $request->phone ?? "Unknown";
+
+
+
+        event(new SendOrderNotification($_order));
+
+        Mail::to($request->email)->send(new OnlineOrderMail());
+
 
         return redirect()->back()->with('message','Order Has been placed successfully');
     }
