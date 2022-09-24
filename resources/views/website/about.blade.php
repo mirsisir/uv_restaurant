@@ -3,76 +3,50 @@
 
 @section('content')
 
-    <div style="height: 200px;"></div>
+    <div>
+        <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-end justify-content-center">
+                    <div class="col-md-9 ftco-animate text-center mb-5">
+                        <h1 class="mb-2 bread">{{__('web.About')}}</h1>
+                        <p class="breadcrumbs"><span class="mr-2"><a>{{__('web.Home')}}
+                                    <i class="fa fa-chevron-right"></i></a></span> <span>{{__('web.About')}} <i class="fa fa-chevron-right"></i></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
- <div class="m-4 p-4">
-     <span id="status"></span>
 
-     <table id="cart" class="table table-hover table-condensed">
-         <thead>
-         <tr>
-             <th style="width:50%">Product</th>
-             <th style="width:10%">Price</th>
-             <th style="width:8%">Quantity</th>
-             <th style="width:22%" class="text-center">Subtotal</th>
-             <th style="width:10%"></th>
-         </tr>
-         </thead>
-         <tbody>
+        <section class="ftco-section ftco-no-pt ftco-no-pb">
+            <div class="container">
+                <div class="flex justify-content-center align-items-center text-center">
+                    <div class=" ftco-animate makereservation p-4 p-md-5">
+                        <div class="heading-section ftco-animate mb-5">
+                            <span class="">This is our secrets</span>
+                            <h2 class="mb-4">{{__('web.Perfect_Ingredients')}}</h2>
+                            <p>{{__('web.OPEN_t')}}</p>
 
-         <?php $total = 0 ?>
+                            <p><a href="#" class="btn btn-primary">{{__('web.Learn_more')}}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-         @if(session('cart'))
-             @foreach((array) session('cart') as $id => $details)
 
-                 <?php $total += $details['price'] * $details['quantity'] ?>
+        <section class="ftco-section ftco-no-pt ftco-no-pb ftco-intro bg-primary">
+            <div class="container py-5">
+                <div class="row py-2">
+                    <div class="col-md-12 text-center">
+                        <h2>{{__('web.We_Make_Delicious_&_Nutritious_Food')}}</h2>
+                        <a href="#" class="btn btn-white btn-outline-white">{{__('web.Book_table')}}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                 <tr>
-                     <td data-th="Product">
-                         <div class="row">
-                             <div class="col-sm-3 hidden-xs">
-                                 <img src="https://image.shutterstock.com/image-vector/food-logo-smile-label-company-600w-1271590297.jpg" width="100"
-
-                                                                  height="100" class="img-responsive"/></div>
-                             <div class="col-sm-9">
-                                 <h4 class="nomargin">{{ $details['name'] }}</h4>
-                             </div>
-                         </div>
-                     </td>
-                     <td data-th="Price">${{ $details['price'] }}</td>
-                     <td data-th="Quantity">
-                         <input type="number" data-id="{{ $id }}" value="{{ $details['quantity'] }}" class="form-control quantity " />
-                     </td>
-                     <td data-th="Subtotal" class="text-center">$<span class="product-subtotal">{{ $details['price'] * $details['quantity'] }}</span></td>
-                     <td class="actions" data-th="">
-                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
-                         <i class="fa fa-circle-o-notch fa-spin btn-loading" style="font-size:24px; display: none"></i>
-                     </td>
-                 </tr>
-             @endforeach
-         @endif
-
-         </tbody>
-         <tfoot>
-         <tr class="visible-xs">
-             <td class="text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
-         </tr>
-         <tr>
-             <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-             <td colspan="2" class="hidden-xs"></td>
-             <td class="hidden-xs text-center"><strong>Total $<span class="cart-total">{{ $total }}</span></strong></td>
-         </tr>
-         <tr>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td><a href="{{ url('/checkout') }}" class="btn btn-success"> Checkout <i class="fa fa-angle-right"></i></a></td>
-         </tr>
-         </tfoot>
-     </table>
- </div>
-
+    </div>
 @endsection
 
 @section('scripts')

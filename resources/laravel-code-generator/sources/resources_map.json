@@ -36,15 +36,39 @@
         "resource-file": "blogs.json"
     },
     {
-        "model-name": "GeneralSettings",
-        "resource-file": "general_settings.json"
-    },
-    {
         "model-name": "Food",
         "resource-file": "food.json"
     },
     {
         "model-name": "Category",
         "resource-file": "categories.json"
+    },
+    {
+        "model-name": "Bank",
+        "resource-file": "banks.json"
+    },
+    {
+        "model-name": "BankAccount",
+        "resource-file": "bank_accounts.json"
+    },
+    {
+        "model-name": "GeneralSettings",
+        "resource-file": "general_settings.json"
+    },
+    {
+        "model-name": "General",
+        "resource-file": "generals.json"
+    },
+    {
+        "model-name": "BookTable",
+        "resource-file": "book_tables.json"
+    },
+    {
+        "model-name": "Newsletter",
+        "resource-file": "newsletters.json"
+    },
+    {
+        "model-name": "Order",
+        "resource-file": "orders.json"
     }
 ]

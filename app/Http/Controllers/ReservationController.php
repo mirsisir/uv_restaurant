@@ -18,8 +18,6 @@ class ReservationController extends Controller
        $data->save();
 
 
-
-
        return redirect(route('home'));
    }
 }

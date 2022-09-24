@@ -1,12 +1,14 @@
 <div class="col-lg-12 col-sm-12 col-12 main-section">
     <div class="dropdown">
         <button type="button" class="btn btn-info mt-2" data-toggle="dropdown">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> {{__('web.cart')}} <span class="badge badge-pill badge-danger">
+                {{ count((array) session('cart')) }}</span>
         </button>
         <div class="dropdown-menu" style="width: 200px !important; padding: 2px">
             <div class="row total-header-section">
                 <div class="col-lg-12 col-sm-12 col-12" >
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">
+                        {{ count((array) session('cart')) }}</span>
                 </div>
 
                 <?php $total = 0 ?>
