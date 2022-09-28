@@ -205,7 +205,7 @@ Route::group([
          ->name('orders.order.store');
     Route::put('order/{order}', [OrdersController::class, 'update'])
          ->name('orders.order.update')->where('id', '[0-9]+');
-    Route::delete('/order/{order}',[OrdersController::class, 'index'])
+    Route::delete('/order/{order}',[OrdersController::class, 'destroy'])
          ->name('orders.order.destroy')->where('id', '[0-9]+');
 });
 

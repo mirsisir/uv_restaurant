@@ -14,12 +14,14 @@ return [
     */
 
     'Home' => 'Home' ,
+    'Read_more' => 'Read more' ,
     'About' => 'About' ,
     'Menu' => 'Menu' ,
     'Product_Order_Form' => 'Product Order Form',
     'Blog' => 'Blog' ,
     'Phone_no' => 'Phone no' ,
     'cart' => 'cart' ,
+    'Add_to_cart' => 'Add to cart',
     'Specialties' => 'Specialties' ,
     'Perfect_Ingredients' => 'Perfect Ingredients' ,
     'Learn_more' => 'Learn more' ,
@@ -35,6 +37,7 @@ return [
     'Newsletter' => "Newsletter",
     'Cooking_Since' => " Cooking Since",
     'Best_Quality' => "Best Quality",
+
     'OPEN_t' => "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove",
 //
 

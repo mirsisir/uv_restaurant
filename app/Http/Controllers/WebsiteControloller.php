@@ -202,6 +202,9 @@ class WebsiteControloller extends Controller
         $data = $this->getData($request);
 
         Order::create($data);
+
+        session()->forget('cart');
+//        $request->session()->flash('cart', []);
         return redirect()->route('home')->with('success', 'Order Place successfully!');
     }
 

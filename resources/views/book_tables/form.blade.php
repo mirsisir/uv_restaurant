@@ -44,7 +44,7 @@
 
 
             @if(' required="true"'===' required="true"') <span class="text-danger font-bolder">*</span> @endif
-        <input class="form-control  {{ $errors->has('date') ? 'is-invalid' : '' }}" name="date" type="date" id="date" value="{{ old('date', optional($bookTable)->date) }}" minlength="1" data=" required="true""  placeholder="Enter date here...">
+        <input class="form-control  {{ $errors->has('date') ? 'is-invalid' : '' }}" name="date" type="text" id="date" value="{{ old('date', optional($bookTable)->date) }}" minlength="1" data=" required="true""  placeholder="Enter date here...">
 
             {!! $errors->first('date', '<p class="form-text text-danger">:message</p>') !!}
 
@@ -57,7 +57,8 @@
 
 
             @if(' required="true"'===' required="true"') <span class="text-danger font-bolder">*</span> @endif
-        <input class="form-control  {{ $errors->has('time') ? 'is-invalid' : '' }}" name="time" type="time" id="time" value="{{ old('time', optional($bookTable)->time) }}" minlength="1" data=" required="true""  placeholder="Enter time here...">
+        <input class="form-control  {{ $errors->has('time') ? 'is-invalid' : '' }}" name="time" type="text"
+               id="time" value="{{ old('time', optional($bookTable)->time) }}" minlength="1" >
 
             {!! $errors->first('time', '<p class="form-text text-danger">:message</p>') !!}
 

@@ -10,7 +10,7 @@
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-md-12 ftco-animate">
                         <div class="text w-100 mt-5 text-center">
-                            <span class="subheading">Spicy ! Restaurant</h2></span>
+                            <span class="subheading">{{$settings->name}}  Restaurant</h2></span>
                             <h1>{{__('web.Cooking_Since')}}</h1>
                             <span class="subheading-2">1958</span>
                         </div>
@@ -25,7 +25,7 @@
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
                     <div class="col-md-12 ftco-animate">
                         <div class="text w-100 mt-5 text-center">
-                            <span class="subheading">Spicy ! Restaurant</h2></span>
+                            <span class="subheading">{{$settings->name}}  Restaurant</h2></span>
                             <h1>{{__('web.Best_Quality')}}</h1>
                             <span class="subheading-2 sub">Food</span>
                         </div>
@@ -111,7 +111,7 @@
                     <div class="col-md-12 col-lg-7">
                         <div class="heading-section mt-5 mb-4">
                             <div class="pl-lg-3 ml-md-5">
-                                <h2 class="mb-4">Welcome to Spicy !</h2>
+                                <h2 class="mb-4">Welcome to {{$settings->name}} </h2>
                             </div>
                         </div>
                         <div class="pl-lg-3 ml-md-5">
@@ -164,13 +164,13 @@
                                     <h3>{{$food->name}}</h3>
                                 </div>
                                 <div class="one-forth">
-                                    <span class="price">${{$food->price}}</span>
+                                    <span class="price">{{$food->price}}</span>
                                 </div>
                             </div>
                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
                             <p class="btn-holder"><a href="javascript:void(0);"
                                                      data-id="{{ $food->id }}" class="btn btn-warning
-                                  btn-block text-center add-to-cart" role="button">Add to cart</a>
+                                  btn-block text-center add-to-cart" role="button">{{__('web.Add_to_cart')}}</a>
                                 <i class="fa fa-circle-o-notch fa-spin btn-loading"
                                    style="font-size:24px; display: none"></i>
                             </p>
@@ -214,7 +214,7 @@
                             </div>
                             <h3 class="heading"><a href="#">{{$blog->title}}</a></h3>
                             <p class="clearfix">
-                                <a href="{{route('read_blog',$blog->id)}}" class="float-left read btn btn-primary">Read more</a>
+                                <a href="{{route('read_blog',$blog->id)}}" class="float-left read btn btn-primary">{{__('web.Read_more')}}</a>
                                 <a href="#" class="float-right meta-chat"><span class="fa fa-comment"></span> 3</a>
                             </p>
                         </div>

@@ -114,7 +114,7 @@
 
             <select class="form-control" id="status" name="status">
         	    <option value="" style="display: none;" {{ old('status', optional($order)->status ?: '') == '' ? 'selected' : '' }} disabled selected>Enter status here...</option>
-        	@foreach (['Pending' => 'Pending',
+        	@foreach (['pending' => 'Pending',
 'Hold' => 'Hold',
 'Accepted' => 'Accepted',
 'Canceled' => 'Canceled',
@@ -124,7 +124,7 @@
 			    </option>
 			@endforeach
         </select>
-        
+
             {!! $errors->first('status', '<p class="form-text text-danger">:message</p>') !!}
 
     </div>

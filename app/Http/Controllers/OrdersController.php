@@ -29,7 +29,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        
+
 
         return view('orders.create');
     }
@@ -44,9 +44,9 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
 
-            
+
             $data = $this->getData($request);
-            
+
             Order::create($data);
 
             return redirect()->route('orders.order.index')
@@ -78,7 +78,7 @@ class OrdersController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-        
+
 
         return view('orders.edit', compact('order'));
     }
@@ -94,9 +94,9 @@ class OrdersController extends Controller
     public function update($id, Request $request)
     {
 
-            
+
             $data = $this->getData($request);
-            
+
             $order = Order::findOrFail($id);
             $order->update($data);
 
@@ -127,11 +127,11 @@ class OrdersController extends Controller
         }
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -145,9 +145,9 @@ class OrdersController extends Controller
             'total' => 'numeric|nullable',
             'payment_type' => 'string|min:1|nullable',
             'is_paid' => 'boolean|nullable',
-            'status' => 'string|min:1|nullable', 
+            'status' => 'string|min:1|nullable',
         ];
-        
+
         $data = $request->validate($rules);
 
         $data['is_paid'] = $request->has('is_paid');

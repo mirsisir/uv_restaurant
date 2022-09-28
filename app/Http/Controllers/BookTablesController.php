@@ -154,7 +154,7 @@ class BookTablesController extends Controller
 
         $data = $request->validate($rules);
 
-        $data['is_approved'] = $request->has('is_approved');
+        $data['is_approved'] = 0;
 
         return $data;
     }

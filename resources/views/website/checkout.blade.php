@@ -159,16 +159,17 @@
 
                 <label>
                     <span>Postcode / ZIP <span class="required">*</span></span>
-                    <input type="text" name="city">
+                    <input type="text" name="code">
                 </label>
                 <label>
                     <span>Phone <span class="required">*</span></span>
-                    <input type="tel"  name="phone">
+                    <input type="tel" id="email"  name="phone">
                 </label>
                 <label>
                     <span>Email Address <span class="required">*</span></span>
-                    <input type="email" name="city">
+                    <input type="email" name="email"  id="email">
                     <input type="hidden" value="{{$total}}" name="total" id="total">
+                    <input type="hidden" value="pending" name="status" id="status">
                 </label>
             </div>
                <div class="Yorder col-sm-4">
@@ -184,17 +185,17 @@
                    </table>
                    <br>
                    <div>
-                       <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
+                       <input type="radio" name="payment_type" value="Bank" checked> Direct Bank Transfer
                    </div>
                    <p>
                        Make your payment directly into our bank account. Please use your Order ID as the payment reference.
                        Your order will not be shipped until the funds have cleared in our account.
                    </p>
                    <div>
-                       <input type="radio" name="dbt" value="cd"> Cash on Delivery
+                       <input type="radio" name="payment_type" value="Cash"> Cash on Delivery
                    </div>
                    <div>
-                       <input type="radio" name="dbt" value="cd"> Paypal <span>
+                       <input type="radio" name="payment_type" value="Paypal"> Paypal <span>
 
 
       <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">

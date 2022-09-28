@@ -30,7 +30,7 @@
                                                     <h3>{{$food->name}}</h3>
                                                 </div>
                                                 <div class="one-forth">
-                                                    <span class="price">${{$food->price}}</span>
+                                                    <span class="price">{{$food->price}}</span>
                                                 </div>
                                             </div>
                                             <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>

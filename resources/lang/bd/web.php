@@ -14,6 +14,7 @@ return [
     */
 
     'Home' => 'প্রধান  পেজ ',
+    'Read_more' => 'আরও পড়ুন' ,
     'About' => 'আমাদের সম্পর্কে পৃষ্ঠা',
     'Menu' => 'খাদ্য তালিকা',
     'Product_Order_Form' => 'পণ্য অর্ডার ফর্ম',
@@ -21,6 +22,7 @@ return [
     'Phone_no' => 'ফোন নম্বর',
     'cart' => 'কার্ট',
     'Specialties' => 'বিশেষত্ব',
+    'Add_to_cart' => 'কার্টে যোগ করুন',
     'Perfect_Ingredients' => 'নিখুঁত উপাদান',
     'Learn_more' => 'নআরও জানুন',
     'Book_table' => 'আপনার টেবিল বুক করুন',
